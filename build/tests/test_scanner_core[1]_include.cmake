@@ -1,5 +1,0 @@
-if(EXISTS "C:/Users/User07/Desktop/project_scanner/build/tests/test_scanner_core[1]_tests.cmake")
-  include("C:/Users/User07/Desktop/project_scanner/build/tests/test_scanner_core[1]_tests.cmake")
-else()
-  add_test(test_scanner_core_NOT_BUILT test_scanner_core_NOT_BUILT)
-endif()
