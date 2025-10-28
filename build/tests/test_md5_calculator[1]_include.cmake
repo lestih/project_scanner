@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/User07/Desktop/project_scanner/build/tests/test_md5_calculator[1]_tests.cmake")
+  include("C:/Users/User07/Desktop/project_scanner/build/tests/test_md5_calculator[1]_tests.cmake")
+else()
+  add_test(test_md5_calculator_NOT_BUILT test_md5_calculator_NOT_BUILT)
+endif()

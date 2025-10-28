@@ -1,0 +1,10 @@
+^C:\USERS\USER07\DESKTOP\PROJECT_SCANNER\BUILD\_DEPS\GOOGLETEST-SUBBUILD\CMAKEFILES\C5AAA14CAF28214C083C4C86A73446F4\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/User07/Desktop/project_scanner/build/_deps/googletest-subbuild -BC:/Users/User07/Desktop/project_scanner/build/_deps/googletest-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/User07/Desktop/project_scanner/build/_deps/googletest-subbuild/googletest-populate.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
