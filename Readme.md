@@ -48,7 +48,7 @@
 - `test_scanner_core.cpp` — Тестирование функциональности сканера
 - `test_utils.h` — Утилиты для создания временных файлов в тестах
 
-### Сборка
+## Сборка
 ```
 # Создание директории для сборки
 mkdir build
@@ -64,7 +64,7 @@ cmake --build . --config Release
 cmake --build . --config Release --target ALL_BUILD
 ```
 
-### Использование
+## Использование
 - `--base` — Путь к CSV файлу с базой вредоносных хешей 
 - `--log` —  Путь к файлу для записи лога обнаруженных угроз
 - `--path` — Путь к директории для сканирования
@@ -72,16 +72,16 @@ cmake --build . --config Release --target ALL_BUILD
 scanner_main.exe --base base.csv --log report.log --path C:\scan_folder
 ```
 
-### Формат базы вредоносных хешей
+## Формат базы вредоносных хешей
 
-# CSV файл с разделителем ;:
+### CSV файл с разделителем ;:
 ```
 a9963513d093ffb2bc7ceb9807771ad4;Exploit
 ac6204ffeb36d2320e52f1d551cfa370;Dropper
 8ee70903f43b227eeb971262268af5a8;Downloader
 ```
 
-### Пример вывода
+## Пример вывода
 
 ```
 Starting scan of directory: C:\scan_folder
