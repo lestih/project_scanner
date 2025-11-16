@@ -1,4 +1,3 @@
-#include "scanner_core.h"
 #include <filesystem>
 #include <fstream>
 #include <thread>
@@ -14,6 +13,9 @@
 #include "md5_calculator.h"
 // #include <openssl/md5.h>
 // #include <openssl/evp.h>  // todo
+
+#include "scanner_core.h"
+#define SCANNER_CORE_EXPORTS
 
 namespace fs = std::filesystem;
 
@@ -164,14 +166,17 @@ public:
         
         ThreadPool threadPool(numThreads);
 
-        std::ofstream logFile(logPath);
-        // if (!logFile.is_open()) {
-        //     result.errors++;
-        //     auto end = std::chrono::high_resolution_clock::now();  // todo
-        //     std::chrono::duration<double> duration = end - start;
-        //     result.duration = duration.count();
-        //     return result;
-        // }
+        std::ofstream logFile(logPath, std::ios::trunc);
+        if (!logFile.is_open()) {
+            result.errors++;
+            auto end = std::chrono::high_resolution_clock::now();  // todo
+            std::chrono::duration<double> duration = end - start;
+            result.duration = duration.count();
+            return result;
+        }
+        
+        
+        logFile << "file_path;hash;verdict" << std::endl;
 
         std::atomic<int> malwareFound{0};
         std::atomic<int> fileErrors{0};

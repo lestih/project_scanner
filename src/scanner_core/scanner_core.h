@@ -26,6 +26,5 @@ public:
     virtual ScanResult scanDirectory(const std::string& rootPath, const std::string& logPath) = 0;
 };
 
-// Фабричная функция для создания экземпляра сканера
 extern "C" SCANNER_API IScannerCore* createScanner();
 extern "C" SCANNER_API void destroyScanner(IScannerCore* scanner);

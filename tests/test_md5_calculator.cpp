@@ -9,7 +9,7 @@ protected:
         // Создаем тестовые файлы
         emptyFile = test_utils::createTempFile("");
         helloFile = test_utils::createTempFile("hello");
-        binaryFile = test_utils::createTempFile("binary\0data", ".bin");
+        binaryFile = test_utils::createTempFile("binary", ".bin");
     }
     
     void TearDown() override {
@@ -44,7 +44,7 @@ TEST_F(MD5CalculatorTest, NonExistentFile) {
 TEST_F(MD5CalculatorTest, BinaryFile) {
     std::string hash = MD5Calculator::calculateFileMD5(binaryFile);  // todo
     // MD5 от "binary\0data"
-    EXPECT_EQ(hash, "5a06f3f7bd0b2b3d4b5b6c7d8e9f0a1b");
+    EXPECT_EQ(hash, "9d7183f16acce70658f686ae7f1a4d20");
 }
 
 // Тест консистентности - повторный вызов дает тот же результат

@@ -17,12 +17,10 @@ public:
         HCRYPTHASH hHash = 0;
         HANDLE hFile = INVALID_HANDLE_VALUE;
         
-        // Константы
         const DWORD BUFFER_SIZE = 8192;
         const DWORD MD5_LENGTH = 16;
         
         try {
-            // Открываем файл
             hFile = CreateFileA(filePath.c_str(), 
                                GENERIC_READ, 
                                FILE_SHARE_READ, 
@@ -83,12 +81,15 @@ public:
 
 private:
     static std::string bytesToHexString(const BYTE* data, DWORD len) {
-        std::stringstream ss;
-        ss << std::hex << std::setfill('0');
+        std::string result;
+        const char* hex_chars = "0123456789abcdef";
+        
         for (DWORD i = 0; i < len; ++i) {
-            ss << std::setw(2) << static_cast<unsigned int>(data[i]);
+            unsigned char byte = data[i];  
+            result += hex_chars[(byte >> 4) & 0x0F]; 
+            result += hex_chars[byte & 0x0F];        
         }
-        return ss.str();
+        return result;
     }
     
     static void cleanup(HCRYPTHASH hHash, HCRYPTPROV hProv, HANDLE hFile) {

@@ -2,7 +2,12 @@
 #include <string>
 #include <vector>
 #include <windows.h>
+#include <filesystem>
+#include <fstream>
 #include "scanner_core.h"
+
+
+namespace fs = std::filesystem;
 
 class ScannerApp {
 private:
@@ -59,7 +64,6 @@ public:
     int run(int argc, char* argv[]) {
         std::string basePath, logPath, scanPath;
 
-        // Парсинг аргументов командной строки
         for (int i = 1; i < argc; ++i) {
             std::string arg = argv[i];
             if (arg == "--base" && i + 1 < argc) {
@@ -70,7 +74,10 @@ public:
                 scanPath = argv[++i];
             }
         }
-
+        std::cout << "Arguments" << std::endl;
+        std::cout << basePath << std::endl;
+        std::cout << logPath << std::endl;
+        std::cout << scanPath << std::endl;
         if (basePath.empty() || logPath.empty() || scanPath.empty()) {
             printUsage();
             return 1;
@@ -89,10 +96,8 @@ public:
         std::cout << "Starting scan of directory: " << scanPath << std::endl;
         std::cout << "Log file: " << logPath << std::endl;
 
-        // Выполнение сканирования
         ScanResult result = scanner->scanDirectory(scanPath, logPath);
 
-        // Вывод отчета
         std::cout << "\n=== Scan Report ===" << std::endl;
         std::cout << "Total files processed: " << result.totalFiles << std::endl;
         std::cout << "Malware files found: " << result.malwareFiles << std::endl;
